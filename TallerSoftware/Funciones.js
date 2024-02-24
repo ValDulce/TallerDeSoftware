@@ -39,10 +39,10 @@ function updateCart() {
     // Actualizar lista de productos en el carrito
     cart.forEach(item => {
         const listItem = document.createElement('li');
-        listItem.textContent = Producto ${item.id}: ${item.quantity} x $${item.price.toFixed(2)};
+        listItem.textContent = `Producto ${item.id}: ${item.quantity} x $${item.price.toFixed(2)}`;
         cartList.appendChild(listItem);
     });
 
     // Actualizar total
-    totalElement.textContent = $${total.toFixed(2)};
+    totalElement.textContent = `$${total.toFixed(2)}`;
 }
