@@ -1,48 +1,48 @@
-let cart = [];
+let carrito = [];
 let total = 0;
 
-function addToCart(productId, price) {
-    const productIndex = cart.findIndex(item => item.id === productId);
+function agregarAlCarrito(idProducto, precio) {
+    const indiceProducto = carrito.findIndex(item => item.id === idProducto);
 
-    if (productIndex !== -1) {
-        cart[productIndex].quantity += 1;
+    if (indiceProducto !== -1) {
+        carrito[indiceProducto].cantidad += 1;
     } else {
-        cart.push({ id: productId, price: price, quantity: 1 });
+        carrito.push({ id: idProducto, precio: precio, cantidad: 1 });
     }
 
-    total += price;
-    updateCart();
+    total += precio;
+    actualizarCarrito();
 }
 
-function removeFromCart(productId, price) {
-    const productIndex = cart.findIndex(item => item.id === productId);
+function quitarDelCarrito(idProducto, precio) {
+    const indiceProducto = carrito.findIndex(item => item.id === idProducto);
 
-    if (productIndex !== -1) {
-        if (cart[productIndex].quantity > 1) {
-            cart[productIndex].quantity -= 1;
+    if (indiceProducto !== -1) {
+        if (carrito[indiceProducto].cantidad > 1) {
+            carrito[indiceProducto].cantidad -= 1;
         } else {
-            cart.splice(productIndex, 1);
+            carrito.splice(indiceProducto, 1);
         }
 
-        total -= price;
-        updateCart();
+        total -= precio;
+        actualizarCarrito();
     }
 }
 
-function updateCart() {
-    const cartList = document.getElementById('cart-list');
-    const totalElement = document.getElementById('total');
+function actualizarCarrito() {
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalElemento = document.getElementById('total');
 
     // Limpiar lista
-    cartList.innerHTML = '';
+    listaCarrito.innerHTML = '';
 
     // Actualizar lista de productos en el carrito
-    cart.forEach(item => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `Producto ${item.id}: ${item.quantity} x $${item.price.toFixed(2)}`;
-        cartList.appendChild(listItem);
+    carrito.forEach(item => {
+        const elementoLista = document.createElement('li');
+        elementoLista.textContent = `Producto ${item.id}: ${item.cantidad} x $${item.precio.toFixed(2)}`;
+        listaCarrito.appendChild(elementoLista);
     });
 
     // Actualizar total
-    totalElement.textContent = `$${total.toFixed(2)}`;
+    totalElemento.textContent = `$${total.toFixed(2)}`;
 }

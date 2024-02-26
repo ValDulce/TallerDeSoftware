@@ -7,36 +7,36 @@
     <title>Carrito de Compras</title>
 </head>
 <body>
-    <div class="cart-container">
+    <div class="contenedor-carrito">
         <h1>Tienda</h1>
 
-        <div class="products">
-            <div class="product" id="product1">
+        <div class="productos">
+            <div class="producto" id="producto1">
                 <img src="Imagenes/Producto1.jpg" alt="Producto 1">
-                <div class="product-details">
+                <div class="detalles-producto">
                     <h2>Chetos</h2>
                     <p>de queso 500g</p>
-                    <span class="price">$17</span>
-                    <button class="add-button" onclick="addToCart('chetos', 17)">Agregar</button>
-                    <button class="remove-button" onclick="removeFromCart('chetos', 17)">Eliminar</button>
+                    <span class="precio">$17</span>
+                    <button class="boton-agregar" onclick="agregarAlCarrito('chetos', 17)">Agregar</button>
+                    <button class="boton-eliminar" onclick="quitarDelCarrito('chetos', 17)">Eliminar</button>
                 </div>
             </div>
 
-            <div class="product" id="product2">
+            <div class="producto" id="producto2">
                 <img src="Imagenes/Producto2.jpg" alt="Producto 2">
-                <div class="product-details">
+                <div class="detalles-producto">
                     <h2>Coca-cola</h2>
                     <p>500 ml</p>
-                    <span class="price">$16</span>
-                    <button class="add-button" onclick="addToCart('Coca-cola', 16)">Agregar</button>
-                    <button class="remove-button" onclick="removeFromCart('Coca-cola', 16)">Eliminar</button>
+                    <span class="precio">$16</span>
+                    <button class="boton-agregar" onclick="agregarAlCarrito('Coca-cola', 16)">Agregar</button>
+                    <button class="boton-eliminar" onclick="quitarDelCarrito('Coca-cola', 16)">Eliminar</button>
                 </div>
             </div>
         </div>
 
-        <div class="cart">
+        <div class="carrito">
             <h2>Carrito</h2>
-            <ul id="cart-list"></ul>
+            <ul id="lista-carrito"></ul>
             <p>Total: <span id="total">$0.00</span></p>
         </div>
     </div>
