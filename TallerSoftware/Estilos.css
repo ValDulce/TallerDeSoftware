@@ -53,6 +53,8 @@ h {
     display: flex;
     align-items: center;
     gap: .5rem;
+    
+
 }
 
 .container-logo i{
@@ -185,3 +187,76 @@ h {
     color: #f9f5f0;
 }
 
+/****************************/
+/******** categorias ********/
+
+ .top-categories{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+ }
+
+ .container-categories{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+ }
+
+.card-category{
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    gap: 2rem;
+}
+
+.category-sodas{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Imagenes/Producto3.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-position: no-repeat;
+}
+
+.category-sabritas{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Imagenes/Producto3.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-position: no-repeat;
+}
+
+.category-chuche{
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Imagenes/Producto3.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-position: no-repeat;
+}
+
+.card-category p{
+    font-size: 2.5rem;
+    color: #f9f5f0;
+    text-transform: relative;
+}
+
+.card-category p::after{
+    content: '';
+    width: 2.5rem;
+    height: 2px;
+    background-color: #f9f5f0;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.card-category span{
+    font-size: 1.6rem;
+    color: #f9f5f0;
+    cursor: pointer;
+}
+
+.card-category span:hover{
+    color: #c7a17a;
+}
