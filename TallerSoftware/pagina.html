@@ -27,12 +27,12 @@
 						<h1 class="logo"><a href="/">Tiendita</a></h1>
 					</div>
 
-					<div class="container-user">
-						<i class="fa-solid fa-user"></i>
-						<i class="fa-solid fa-basket-shopping"></i>
-						<div class="content-shopping-cart">
-							<span class="text">Carrito</span>
-							<span class="number">(0)</span>
+					<div class="container-user" id="user-cart">
+                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <div class="content-shopping-cart">
+                            <span class="text">Carrito</span>
+                            <span class="number" id="cart-count">0</span>
 						</div>
 					</div>
 				</div>
@@ -337,7 +337,37 @@
 				</div>
 			</div>
 		</footer>
-
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Obtenemos el contenedor del carrito y el contador
+                var userCart = document.getElementById("user-cart");
+                var cartCount = document.getElementById("cart-count");
+        
+                // Creamos un objeto para almacenar los productos en el carrito
+                var cartProducts = [];
+        
+                // Función para agregar un producto al carrito
+                function addToCart(productName) {
+                    cartProducts.push(productName);
+                    updateCartCount();
+                }
+        
+                // Función para actualizar el contador del carrito
+                function updateCartCount() {
+                    var count = cartProducts.length;
+                    cartCount.textContent = count;
+                }
+        
+                // Agregamos eventos de clic a los botones "add-cart" en cada producto
+                var addCartButtons = document.querySelectorAll(".add-cart");
+                addCartButtons.forEach(function(button) {
+                    button.addEventListener("click", function() {
+                        var productName = this.closest(".content-card-product").querySelector("h3").textContent;
+                        addToCart(productName);
+                    });
+                });
+            });
+        </script>
 		<script
 			src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
 	</body>
