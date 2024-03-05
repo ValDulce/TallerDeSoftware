@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago</title>
+    <link rel="stylesheet" href="Estilos.css">
+</head>
+<body>
+    <h1>Productos en el carrito:</h1>
+    <ul id="cart-items"></ul>
+
+    <script>
+        // Leer los productos del almacenamiento local y mostrarlos en la página
+        document.addEventListener("DOMContentLoaded", function() {
+            var cartItems = JSON.parse(localStorage.getItem("cartProducts"));
+            var cartList = document.getElementById("cart-items");
+            if (cartItems && cartItems.length > 0) {
+                cartItems.forEach(function(item) {
+                    var li = document.createElement("li");
+                    li.textContent = item;
+                    cartList.appendChild(li);
+                });
+            } else {
+                var li = document.createElement("li");
+                li.textContent = "No hay productos en el carrito";
+                cartList.appendChild(li);
+            }
+        });
+    </script>
+    <script src="Funciones.js"></script>
+</body>
+</html>
+
+    <footer></footer>
+    
