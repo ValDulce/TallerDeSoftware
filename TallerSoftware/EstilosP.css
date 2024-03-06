@@ -9,8 +9,8 @@
 }
 
 body {
-    width: 25%; /* El cuerpo ocupa el 25% del ancho de la ventana */
-            height: 25vh; /* El cuerpo ocupa el 25% de la altura de la ventana */
+    width: 30%; /* El cuerpo ocupa el 25% del ancho de la ventana */
+            height: 40vh; /* El cuerpo ocupa el 25% de la altura de la ventana */
             margin: auto; /* Centra el cuerpo horizontalmente */
 }
 
@@ -34,7 +34,8 @@ h2{
 }
 
 p{
-    text-align: right;
+    text-align: center;
+
 }
 
 img {
