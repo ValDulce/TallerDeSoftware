@@ -1,38 +1,97 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pago</title>
-    <link rel="stylesheet" href="Estilos.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pago</title>
+  <link rel="stylesheet" href="Estilos.css">
 </head>
-<body>
-    <h1>Productos en el carrito:</h1>
-    <ul id="cart-items"></ul>
 
-    <script>
-        // Leer los productos del almacenamiento local y mostrarlos en la página
-        document.addEventListener("DOMContentLoaded", function() {
-            var cartItems = JSON.parse(localStorage.getItem("cartProducts"));
-            var cartList = document.getElementById("cart-items");
-            if (cartItems && cartItems.length > 0) {
-                cartItems.forEach(function(item) {
-                    var li = document.createElement("li");
-                    li.textContent = item;
-                    cartList.appendChild(li);
-                });
-            } else {
-                var li = document.createElement("li");
-                li.textContent = "No hay productos en el carrito";
-                cartList.appendChild(li);
-            }
+<body style="	box-shadow: 0px 0px 4px  black, 0px 0px 4px  black;">
+  <div class="py-5">
+    <div class="container hero">
+      <div class="customer-support">
+        <i class="fa-solid fa-headset" aria-hidden="true"></i>
+        <div class="content-customer-support">
+          <span class="text">Soporte al cliente</span>
+          <span class="number">449-257-7808</span>
+        </div>
+      </div>
+      <div class="container-logo">
+        <i class="fa-solid fa-store" aria-hidden="true"></i>
+        <h1 class="logo">Tiendita</h1>
+      </div>
+      <div class="container-user" id="user-cart">
+        <i class="fa-solid fa-user" aria-hidden="true"></i>
+        <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Productos en el carrito:</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul id="cart-items"></ul>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"></div>
+      </div>
+    </div>
+  </div>
+  <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+  <script>
+    // Leer los productos del almacenamiento local y mostrarlos en la página
+    document.addEventListener("DOMContentLoaded", function() {
+      mostrarProductosEnCarrito();
+    });
+
+    function mostrarProductosEnCarrito() {
+      var cartItems = JSON.parse(localStorage.getItem("cartProducts"));
+      var cartList = document.getElementById("cart-items");
+      cartList.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
+      if (cartItems && cartItems.length > 0) {
+        cartItems.forEach(function(item, index) {
+          var li = document.createElement("li");
+          var span = document.createElement("span");
+          span.textContent = (index + 1) + ". " + item;
+          li.appendChild(span);
+          var button = document.createElement("button");
+          button.textContent = "Eliminar";
+          button.onclick = function() {
+            eliminarProducto(index);
+          };
+          li.appendChild(button);
+          cartList.appendChild(li);
         });
-    </script>
-    <script src="Funciones.js"></script>
-</body>
-</html>
+      } else {
+        var li = document.createElement("li");
+        li.textContent = "No hay productos en el carrito";
+        cartList.appendChild(li);
+      }
+    }
 
-    <footer></footer>
-    
+    function vaciarCarrito() {
+      localStorage.removeItem("cartProducts");
+      mostrarProductosEnCarrito(); // Actualizar la lista de productos en el carrito
+    }
+
+    function eliminarProducto(index) {
+      var cartItems = JSON.parse(localStorage.getItem("cartProducts"));
+      cartItems.splice(index, 1); // Eliminar el producto del carrito
+      localStorage.setItem("cartProducts", JSON.stringify(cartItems));
+      mostrarProductosEnCarrito(); // Actualizar la lista de productos en el carrito
+    }
+  </script>
+  <script src="Funciones.js"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+</body>
+
+</html>
