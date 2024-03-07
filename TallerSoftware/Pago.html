@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,15 +11,30 @@
     <h1>Productos en el carrito:</h1>
     <ul id="cart-items"></ul>
 
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+
     <script>
         // Leer los productos del almacenamiento local y mostrarlos en la página
         document.addEventListener("DOMContentLoaded", function() {
+            mostrarProductosEnCarrito();
+        });
+
+        function mostrarProductosEnCarrito() {
             var cartItems = JSON.parse(localStorage.getItem("cartProducts"));
             var cartList = document.getElementById("cart-items");
+            cartList.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
             if (cartItems && cartItems.length > 0) {
-                cartItems.forEach(function(item) {
+                cartItems.forEach(function(item, index) {
                     var li = document.createElement("li");
-                    li.textContent = item;
+                    var span = document.createElement("span");
+                    span.textContent = (index + 1) + ". " + item;
+                    li.appendChild(span);
+                    var button = document.createElement("button");
+                    button.textContent = "Eliminar";
+                    button.onclick = function() {
+                        eliminarProducto(index);
+                    };
+                    li.appendChild(button);
                     cartList.appendChild(li);
                 });
             } else {
@@ -28,11 +42,20 @@
                 li.textContent = "No hay productos en el carrito";
                 cartList.appendChild(li);
             }
-        });
+        }
+
+        function vaciarCarrito() {
+            localStorage.removeItem("cartProducts");
+            mostrarProductosEnCarrito(); // Actualizar la lista de productos en el carrito
+        }
+
+        function eliminarProducto(index) {
+            var cartItems = JSON.parse(localStorage.getItem("cartProducts"));
+            cartItems.splice(index, 1); // Eliminar el producto del carrito
+            localStorage.setItem("cartProducts", JSON.stringify(cartItems));
+            mostrarProductosEnCarrito(); // Actualizar la lista de productos en el carrito
+        }
     </script>
     <script src="Funciones.js"></script>
 </body>
 </html>
-
-    <footer></footer>
-    
