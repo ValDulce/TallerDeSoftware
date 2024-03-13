@@ -11,6 +11,11 @@ html {
 	font-family: 'Poppins', sans-serif;
 }
 
+h5 {
+	align-items: center;
+	font-size: 25px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
